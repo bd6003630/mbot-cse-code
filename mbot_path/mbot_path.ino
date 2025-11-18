@@ -22,7 +22,7 @@ void turnLeft() {
     led.setColor(255,0,0);
     led.show();
     motor1.run(100);
-    delay(1500);
+    delay(1100);
     motor1.stop();
     led.setColor(0,0,0);
     led.show();
@@ -31,8 +31,8 @@ void turnRight() {
     delay(1000);
     led.setColor(255,0,0);
     led.show();
-    motor2.run(100);
-    delay(1500);
+    motor2.run(-100);
+    delay(1100);
     motor2.stop();
     led.setColor(0,0,0);
     led.show();
@@ -42,10 +42,8 @@ void spinLeft() {
     led.setColor(255,0,0);
     led.show();
     motor1.run(100);
-    motor2.run(100);
-    delay(3000);
+    delay(4000);
     motor1.stop();
-    motor2.stop();
     led.setColor(0,0,0);
     led.show();
 }
@@ -53,13 +51,14 @@ void spinRight() {
     delay(1000);
     led.setColor(255,0,0);
     led.show();
-    motor1.run(-100);
     motor2.run(-100);
-    delay(3000);
-    motor1.stop();
+    delay(4000);
     motor2.stop();
     led.setColor(0,0,0);
     led.show();
+}
+void pause() {
+    delay(5000);
 }
 /*****************************/
 void setup(){
@@ -69,9 +68,10 @@ void setup(){
 }
 /*****************************/
 void loop() {
+   delay(2000);
    move();
    turnRight();
+   move();
    turnLeft();
-   spinRight();
-   spinLeft();
+   move();
 }

@@ -6,7 +6,6 @@ MeDCMotor motor2(M2);
 MeRGBLed led(0,30);
 /*****************************/
 void move() {
-    delay(1000);
     led.setColor(0,255,0);
     led.show();
     motor1.run(100);
@@ -18,7 +17,6 @@ void move() {
     led.show();
 }
 void turnLeft() {
-    delay(1000);
     led.setColor(255,0,0);
     led.show();
     motor1.run(100);
@@ -28,7 +26,6 @@ void turnLeft() {
     led.show();
 }
 void turnRight() {
-    delay(1000);
     led.setColor(255,0,0);
     led.show();
     motor2.run(-100);
@@ -37,22 +34,22 @@ void turnRight() {
     led.setColor(0,0,0);
     led.show();
 }
-void spinLeft() {
-    delay(1000);
+void spin180() {
     led.setColor(255,0,0);
     led.show();
     motor1.run(100);
-    delay(4000);
+    delay(2000);
     motor1.stop();
     led.setColor(0,0,0);
     led.show();
 }
-void spinRight() {
-    delay(1000);
-    led.setColor(255,0,0);
+void moveBackward() {
+    led.setColor(0,255,0);
     led.show();
-    motor2.run(-100);
-    delay(4000);
+    motor1.run(-100);
+    motor2.run(100);
+    delay(5000);
+    motor1.stop();
     motor2.stop();
     led.setColor(0,0,0);
     led.show();
@@ -68,7 +65,7 @@ void setup(){
 }
 /*****************************/
 void loop() {
-   delay(2000);
+   delay(3000);
    move();
    turnRight();
    move();

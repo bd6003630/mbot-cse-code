@@ -13,22 +13,28 @@ void setup() {
 }
 /*****************************/
 void loop() {
+  delay(3000);
   if (lineFinder.readSensor1()==0 && lineFinder.readSensor2()==0)
     {
       Serial.println("Sensor 1 on black and Sensor2 on black");
-      motor1.run
+      motor1.run(50);
+      motor2.run(-54);
     }
   else if (lineFinder.readSensor1()==1 && lineFinder.readSensor2()==0)
     {
      Serial.println("Sensor 1 on white and Sensor 2 on black");
+     motor2.run(-54);
     }
   else if (lineFinder.readSensor1()==0 && lineFinder.readSensor2()==1)
     {
     Serial.println("Sensor 1 on Black and Sensor 2 on White");
+    motor1.run(50);
     }
   else //(lineFinder.readSensor1()==1 && lineFinder.readSensor2()==1)
     {
     Serial.println("Sensor 1 on White and Sensor 2 on White");
+    motor1.stop();
+    motor2.stop();
     }
 delay(1000);
 }

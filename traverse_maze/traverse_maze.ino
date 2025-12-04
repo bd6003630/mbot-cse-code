@@ -6,17 +6,42 @@ MeLineFollower lineFinder(PORT_2);
 MeDCMotor motor1(M1);
 MeDCMotor motor2(M2);
 MeRGBLed led(0,30);
-
+/*****************************/
+void move() {
+  if (ultraSonic.distanceCm() > 10) {
+    motor1.run(70);
+    motor2.run(-75);
+  } 
+}
+void path() {
+  if (ultraSonic.distanceCm() < 10) {
+    motor1.run(70);
+    motor2.run(70);
+    delay(1000);
+    motor1.stop();
+    motor2.stop();
+    if (ultraSonic.distanceCm() < 10) {
+      motor1.run(70);
+      motor2.run(70);
+      delay(1750);
+      motor1.stop();
+      motor2.stop();
+    }
+  }
+}
+/*****************************/
 void setup() {
   led.setpin(13);
   pinMode(A7,INPUT);
   while(analogRead(A7) !=0);
   Serial.begin(9600);
 }
-
+/*****************************/
 void loop() {
   Serial.print("Distance: ");
   Serial.print(ultraSonic.distanceCm());
   Serial.println(" cm");
   delay(300);
+  move();
+  path();
 }

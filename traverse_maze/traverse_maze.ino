@@ -9,21 +9,31 @@ MeRGBLed led(0,30);
 /*****************************/
 void move() {
   if (ultraSonic.distanceCm() > 10) {
-    motor1.run(70);
-    motor2.run(-75);
-  } 
-}
-void path() {
-  if (ultraSonic.distanceCm() < 10) {
-    motor1.run(70);
-    motor2.run(70);
+    motor1.run(100);
+    motor2.run(-100);
     delay(1000);
     motor1.stop();
     motor2.stop();
+    turn();
+  } 
+}
+void turn() {
+  if (ultraSonic.distanceCm() < 10) {
+    motor1.run(100);
+    motor2.run(100);
+    delay(550);
+    motor1.stop();
+    motor2.stop();
     if (ultraSonic.distanceCm() < 10) {
-      motor1.run(70);
-      motor2.run(70);
-      delay(1750);
+      motor1.run(100);
+      motor2.run(100);
+      delay(1000);
+      motor1.stop();
+      motor2.stop();
+    } else {
+      motor1.run(100);
+      motor2.run(100);
+      delay(550);
       motor1.stop();
       motor2.stop();
     }
@@ -43,5 +53,5 @@ void loop() {
   Serial.println(" cm");
   delay(300);
   move();
-  path();
+  turn();
 }

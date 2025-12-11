@@ -15,7 +15,7 @@ void move() {
     motor1.stop();
     motor2.stop();
     turn();
-  } 
+  }
 }
 void turn() {
   motor1.run(100);

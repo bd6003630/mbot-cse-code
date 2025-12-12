@@ -11,26 +11,24 @@ void move() {
   if (ultraSonic.distanceCm() > 10) {
     motor1.run(100);
     motor2.run(-100);
-    delay(500);
-    motor1.stop();
-    motor2.stop();
-    turn();
   }
 }
 void turn() {
-  motor1.run(100);
-  motor2.run(100);
-  delay(550);
-  motor1.stop();
-  motor2.stop();
   if (ultraSonic.distanceCm() < 10) {
     motor1.run(100);
     motor2.run(100);
-    delay(1000);
+    delay(550);
     motor1.stop();
     motor2.stop();
+    if (ultraSonic.distanceCm() < 10) {
+      motor1.run(100);
+      motor2.run(100);
+      delay(1000);
+      motor1.stop();
+      motor2.stop();
     }
   }
+}
 /*****************************/
 void setup() {
   led.setpin(13);
@@ -45,7 +43,6 @@ void loop() {
   Serial.println(" cm");
   delay(300);
   move();
-  if (ultraSonic.distanceCm() < 10) {
   turn();
   }
 }

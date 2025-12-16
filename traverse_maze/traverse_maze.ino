@@ -22,16 +22,16 @@ void fullTurn() {
   motor2.stop();
 }
 void move() {
-  if (ultraSonic.distanceCm() > 10) {
+  if (ultraSonic.distanceCm() > 7) {
     motor1.run(100);
-    motor2.run(-100);
+    motor2.run(-105);
   }
 }
 /*****************************/
 void turn() {
-  if (ultraSonic.distanceCm() < 10) {
+  if (ultraSonic.distanceCm() < 7) {
     right();
-    if (ultraSonic.distanceCm() < 10) {
+    if (ultraSonic.distanceCm() < 7) {
       fullTurn();
     }
   }
@@ -39,9 +39,9 @@ void turn() {
 void check() { /*unused function*/
   delay(1000);
   right();
-  if (ultraSonic.distanceCm() < 10) {
+  if (ultraSonic.distanceCm() < 7) {
     fullTurn();
-    if (ultraSonic.distanceCm() < 10) {
+    if (ultraSonic.distanceCm() < 7) {
     right();
     }
   } else {

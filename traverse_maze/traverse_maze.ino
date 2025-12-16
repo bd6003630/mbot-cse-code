@@ -36,7 +36,7 @@ void turn() {
     }
   }
 }
-void check() {
+void check() { /*unused function*/
   delay(1000);
   right();
   if (ultraSonic.distanceCm() < 10) {
@@ -63,6 +63,5 @@ void loop() {
   delay(300);
   move();
   turn();
-  check();
   }
 }

@@ -17,7 +17,7 @@ void right() {
 void fullTurn() {
   motor1.run(100);
   motor2.run(100);
-  delay(1000);
+  delay(1050);
   motor1.stop();
   motor2.stop();
 }
@@ -64,4 +64,3 @@ void loop() {
   move();
   turn();
   }
-}
